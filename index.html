@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prachi Tailor | Web Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Prachi Tailor, a Web Technologies expert and BCA student from Chittaurgarh, Rajasthan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --accent-primary: #00f2ff;
+            --accent-secondary: #7000ff;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Cursor Blob Background Effect */
+        .cursor-blob {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-content h2 {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtext {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+        }
+
+        .hero-visual .glass-card {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* About Section */
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .about {
+            padding: 8rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .education-timeline {
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            border-left: 2px solid var(--accent-secondary);
+            margin-bottom: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 0 15px 15px 0;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Grid */
+        .skills {
+            padding: 8rem 0;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 3rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+        }
+
+        .skill-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Achievements */
+        .achievements {
+            padding: 8rem 0;
+        }
+
+        .achievement-highlight {
+            background: var(--gradient);
+            padding: 4rem;
+            border-radius: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 8rem 0 4rem;
+        }
+
+        .contact-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 4rem;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .contact-card h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        #contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 1.2rem;
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-subtext {
+                margin: 0 auto 2.5rem;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-blob"></div>
+    
+    <nav>
+        <div class="logo">PT<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="#contact" class="btn-primary">Hire Me</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="reveal-text">Hello, I'm</h2>
+                <h1 class="glitch-text">Prachi Tailor</h1>
+                <p class="hero-subtext">Web Developer & Design Enthusiast based in Chittaurgarh.</p>
+                <div class="hero-btns">
+                    <a href="#achievements" class="btn-primary">View My Work</a>
+                    <a href="#about" class="btn-secondary">About Me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glass-card">
+                    <img src="profile_illustration.png" alt="Prachi Tailor" id="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a passionate Web Developer currently pursuing my <strong>BCA from Mewar Girls College</strong>. My journey in technology started with a deep curiosity for how the web works, which led me to be selected as a <strong>Skill India competition candidate at the state level in the Web Technologies trade</strong>.</p>
+                    <div class="education-timeline">
+                        <div class="timeline-item">
+                            <h3>Bachelor of Computer Applications (BCA)</h3>
+                            <span>Mewar Girls College</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Higher Secondary (12th)</h3>
+                            <span>Vivekanand School</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Secondary (10th)</h3>
+                            <span>Velocity High School</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h3>State Level</h3>
+                        <p>Skill India Candidate</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Web Tech</h3>
+                        <p>Trade Specialization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon">🌐</div>
+                    <h3>Web Technologies</h3>
+                    <p>HTML, CSS, JavaScript, Responsive Design</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive and beautiful user interfaces.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon">🚀</div>
+                    <h3>Performance</h3>
+                    <p>Optimizing web apps for speed and accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="achievement-highlight">
+                <div class="achievement-content">
+                    <h3>Skill India Competition</h3>
+                    <p class="tag">State Level Candidate - Web Technologies Trade</p>
+                    <p>Proudly selected as a state-level candidate for the Skill India competition in the <strong>Web Technologies trade</strong>. This experience honed my technical skills and taught me to perform under high-pressure competitive environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Let's Build Something Together</h2>
+                <p>Looking for a web developer or want to discuss a project? Reach out!</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/prachitotla/" target="_blank">LinkedIn</a>
+                </div>
+                <form id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="4" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Prachi Tailor. Built with passion in Chittaurgarh.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cursor Blob Follow Effect
+            const blob = document.querySelector('.cursor-blob');
+            if (blob) {
+                window.addEventListener('mousemove', (e) => {
+                    const { clientX, clientY } = e;
+                    blob.animate({
+                        left: `${clientX}px`,
+                        top: `${clientY}px`
+                    }, {
+                        duration: 3000,
+                        fill: "forwards"
+                    });
+                });
+            }
+
+            // Reveal Animations on Scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('reveal');
+                observer.observe(section);
+            });
+
+            // Smooth scroll for nav links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Form submission animation (placeholder)
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('button');
+                    const originalText = btn.innerText;
+                    btn.innerText = 'Sending...';
+                    btn.disabled = true;
+                    
+                    setTimeout(() => {
+                        btn.innerText = 'Message Sent! ✨';
+                        form.reset();
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.disabled = false;
+                        }, 3000);
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
